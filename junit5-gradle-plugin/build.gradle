@@ -1,0 +1,18 @@
+junitPlatform {
+    filters {
+        tags {
+            include = ['smoke', 'fast']
+            exclude 'slow'
+        }
+    }
+    // logManager "org.apache.logging.log4j.jul.LogManager"
+    // enableStandardTestTask true
+}
+
+junitPlatformTest {
+    systemProperties System.properties
+}
+
+dependencies {
+    testCompile("org.junit.platform:junit-platform-suite-api:${junitPlatformVersion}")
+}

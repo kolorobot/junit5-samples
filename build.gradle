@@ -1,0 +1,52 @@
+buildscript {
+
+    ext {
+        junitPlatformVersion = junitPlatformVersion
+        junitJupiterVersion = junitJupiterVersion
+    }
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.junit.platform:junit-platform-gradle-plugin:${junitPlatformVersion}"
+    }
+}
+
+allprojects {
+
+    group = 'pl.codeleak.samples.junit5-samples'
+    version = '1.0.0'
+
+    apply plugin: 'java'
+    apply plugin: 'org.junit.platform.gradle.plugin'
+
+    sourceCompatibility = 1.8
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        /* The only one required dependency to get started with JUnit 5 */
+        testCompile ("org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}")
+    }
+}
+
+
+project(":shared") {
+    dependencies {
+        compileOnly("org.projectlombok:lombok:1.16.14")
+    }
+}
+
+configure(subprojects.findAll{it.name != 'shared'}) {
+    dependencies {
+        compile project(":shared")
+    }
+}
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.1'
+}

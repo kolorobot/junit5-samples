@@ -1,0 +1,29 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.8.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'org.springframework.boot'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+
+    /* This is only required for Spring Boot 1.x */
+    testCompile('com.github.sbrannen:spring-test-junit5:1.0.0')
+
+    /* REST Assured can be used to test the REST API */
+    testCompile project(":junit5-rest-assured")
+}
