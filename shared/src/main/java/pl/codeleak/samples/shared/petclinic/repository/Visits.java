@@ -6,6 +6,7 @@ import pl.codeleak.samples.shared.petclinic.model.Visit;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class Visits {
 
@@ -22,5 +23,11 @@ public class Visits {
                     .date(LocalDateTime.parse(dateTime))
                     .description(description)
                     .pet(pet).build();
+    }
+
+    public Optional<Visit> findByPet(Pet pet) {
+        return visits.stream()
+                .filter(v -> v.getPet().equals(pet))
+                .findFirst();
     }
 }
