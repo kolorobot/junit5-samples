@@ -12,6 +12,7 @@ import pl.codeleak.samples.junit5.springboot1x.domain.PetRepository;
 import pl.codeleak.samples.junit5.springboot1x.resolver.factories.mega.MegaFactory;
 
 public class AnnotationFactoriesExtension implements ParameterResolver {
+
     @Override
     public boolean supportsParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
         return parameterContext.getParameter().getType().isAssignableFrom(Owner.class) &&
@@ -23,7 +24,7 @@ public class AnnotationFactoriesExtension implements ParameterResolver {
         MegaFactory megaFactory = prepareMegaFactory(extensionContext);
         AnOwner anOwner = parameterContext.getParameter().getAnnotation(AnOwner.class);
 
-        return megaFactory.prepareNew()
+        return megaFactory.prepareNewOwner()
                 .withName(anOwner.withName())
                 .withAddress(anOwner.withAddress())
                 .withPet(anOwner.withPetName())
@@ -36,8 +37,5 @@ public class AnnotationFactoriesExtension implements ParameterResolver {
         OwnerRepository ownerRepository = context.getBean(OwnerRepository.class);
 
         return new MegaFactory(petRepository, ownerRepository);
-
     }
-
-
 }

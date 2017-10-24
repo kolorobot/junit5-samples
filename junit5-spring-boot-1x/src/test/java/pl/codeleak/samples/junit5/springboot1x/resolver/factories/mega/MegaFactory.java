@@ -12,40 +12,41 @@ public class MegaFactory {
     private final PetRepository petRepository;
     private final OwnerRepository ownerRepository;
 
-    private Owner owner;
-    private Optional<Pet> pet;
-
     public MegaFactory(PetRepository petRepository, OwnerRepository ownerRepository) {
         this.petRepository = petRepository;
         this.ownerRepository = ownerRepository;
     }
 
-    public MegaFactory prepareNew() {
-        owner = new Owner();
-        pet = Optional.empty();
-        return this;
+    public MegaOwnerFactory prepareNewOwner() {
+        return new MegaOwnerFactory();
     }
 
-    public MegaFactory withName(String name) {
-        owner.setName(name);
-        return this;
-    }
+    public class MegaOwnerFactory {
 
-    public MegaFactory withAddress(String address) {
-        owner.setAddress(address);
-        return this;
-    }
+        private Owner owner = new Owner();
+        private Optional<Pet> pet = Optional.empty();
 
-    public MegaFactory withPet(String name) {
-        Pet pet = new Pet();
-        pet.setName(name);
+        public MegaOwnerFactory withName(String name) {
+            owner.setName(name);
+            return this;
+        }
 
-        this.pet = Optional.of(pet);
-        return this;
-    }
+        public MegaOwnerFactory withAddress(String address) {
+            owner.setAddress(address);
+            return this;
+        }
 
-    public Owner create() {
-        pet.map(petRepository::save).ifPresent(owner::setPet);
-        return ownerRepository.save(owner);
+        public MegaOwnerFactory withPet(String name) {
+            Pet pet = new Pet();
+            pet.setName(name);
+
+            this.pet = Optional.of(pet);
+            return this;
+        }
+
+        public Owner create() {
+            pet.map(petRepository::save).ifPresent(owner::setPet);
+            return ownerRepository.save(owner);
+        }
     }
 }

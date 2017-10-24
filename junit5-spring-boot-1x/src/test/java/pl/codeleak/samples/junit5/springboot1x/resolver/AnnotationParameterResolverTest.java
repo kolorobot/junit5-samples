@@ -9,7 +9,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import pl.codeleak.samples.junit5.springboot1x.domain.Owner;
 import pl.codeleak.samples.junit5.springboot1x.domain.OwnerRepository;
 import pl.codeleak.samples.junit5.springboot1x.domain.PetRepository;
-import pl.codeleak.samples.junit5.springboot1x.resolver.factories.JugIntegrationTest;
 import pl.codeleak.samples.junit5.springboot1x.resolver.factories.annotation.AnOwner;
 import pl.codeleak.samples.junit5.springboot1x.resolver.factories.annotation.AnnotationFactoriesExtension;
 

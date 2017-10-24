@@ -16,7 +16,7 @@ class AssertJExceptionTest {
 
     // assertJ exceptions assert style
     @Test
-    @DisplayName("Should throw exception when trying to save to owner repository")
+    @DisplayName("Should throw exception when trying to save to read only repository (AssertJ)")
     void throwsExceptionWhenWriting() {
         // arrange
         Owner givenOwner = Owners.anOwner("Maciek", "Koziara", "address", "city", "telephone");
@@ -29,7 +29,7 @@ class AssertJExceptionTest {
 
     // junit5 exceptions assert style
     @Test
-    @DisplayName("Should throw exception when trying to save to owner repository")
+    @DisplayName("Should throw exception when trying to save to read only repository (Junit5)")
     void throwsExceptionWhenWriting2() {
         // arrange
         Owner givenOwner = Owners.anOwner("Maciek", "Koziara", "address", "city", "telephone");

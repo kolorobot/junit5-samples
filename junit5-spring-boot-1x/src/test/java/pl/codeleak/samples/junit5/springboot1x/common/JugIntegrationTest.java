@@ -1,4 +1,4 @@
-package pl.codeleak.samples.junit5.springboot1x.resolver.factories;
+package pl.codeleak.samples.junit5.springboot1x.common;
 
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -20,11 +20,6 @@ import pl.codeleak.samples.junit5.springboot1x.resolver.factories.PetsFactory;
 // proste factory jako parameter resolver -> plus podwójny extend with ale to fajnie jakby było ukryte żeby nie psuć niespodzianku
 class SimpleParameterResolverTest {
 
-    @Autowired
-    private PetRepository petRepository;
-    @Autowired
-    private OwnerRepository ownerRepository;
-
     @Test
     void simpleExtensionTest(OwnersFactory ownersFactory,
                              PetsFactory petsFactory,
@@ -48,4 +43,9 @@ class SimpleParameterResolverTest {
         testReporter.publishEntry("Pet", pet.toString());
         testReporter.publishEntry("Owner", owner.toString());
     }
+
+    @Autowired
+    private PetRepository petRepository;
+    @Autowired
+    private OwnerRepository ownerRepository;
 }

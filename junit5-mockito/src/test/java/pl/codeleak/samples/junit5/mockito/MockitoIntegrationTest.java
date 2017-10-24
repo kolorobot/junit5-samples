@@ -23,7 +23,6 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class MockitoIntegrationTest {
 
-    // todo troche zwalone jest używanie tego moze napisze wlasny i bede udawac ze to jest oficjalny
     @InjectMocks
     private VisitNotificationService testObj;
     @Mock
@@ -33,7 +32,7 @@ class MockitoIntegrationTest {
 
     @Test
     @DisplayName("Should send notification about the visit for given pet")
-    // tu mialy byc wstrzykniete mocki a nie robienie tego tak jak w Junit4. bez sensu
+    // wstrzykiwanie Argument Captora
     void sendsNotification(ArgumentCaptor<String> messageCaptor) {
         // arrange
         String expectedName = "Maciek";
@@ -52,12 +51,5 @@ class MockitoIntegrationTest {
 
         String resultMessage = messageCaptor.getValue();
         Assertions.assertTrue(resultMessage.contains(expectedDate));
-    }
-
-    @Test
-    @DisplayName("Should throw exception when there is no visit associated with pet")
-    // to mial byc test ktory pokaze ze nie zawsze trzeba wszystko mockowac, czasem wystarczy wstrzyknac tylko to czego potrzebuje
-    void throwsException() {
-
     }
 }

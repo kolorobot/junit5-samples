@@ -26,14 +26,13 @@ class MegaParameterResolverTest {
     @Test
     void megaParameterTest(MegaFactory megaFactory,
                            TestReporter testReporter) {
-        megaFactory.prepareNew()
-                .withAddress("Gdańsk")
+        megaFactory.prepareNewOwner()
                 .withName("Maciek")
+                .withAddress("Gdańsk")
                 .withPet("Pies")
                 .create();
 
         testReporter.publishEntry("Pet", petRepository.findAll().toString());
         testReporter.publishEntry("Owner", ownerRepository.findAll().toString());
-
     }
 }

@@ -24,7 +24,6 @@ class SpringBoot1xIntegrationTest {
 
     @Test
     void contextLoads(TestReporter testReporter) {
-
         Pet pet = new Pet();
         pet.setName("Pies");
         Pet savedPet = petRepository.save(pet);
@@ -38,10 +37,5 @@ class SpringBoot1xIntegrationTest {
 
         testReporter.publishEntry("Saved owners", ownerRepository.findAll().toString());
         testReporter.publishEntry("Saved pets", petRepository.findAll().toString());
-
-
-
-
-
     }
 }

@@ -22,7 +22,6 @@ public class MegaFactoriesExtension implements ParameterResolver {
         PetRepository petRepository = context.getBean(PetRepository.class);
         OwnerRepository ownerRepository = context.getBean(OwnerRepository.class);
 
-
         return new MegaFactory(petRepository, ownerRepository);
     }
 }

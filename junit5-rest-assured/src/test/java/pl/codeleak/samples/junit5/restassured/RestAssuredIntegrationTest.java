@@ -11,7 +11,7 @@ class RestAssuredIntegrationTest {
 
     @Test
     void name() {
-        get("Endre_Ady")
+        get("Some_Test")
                 .then()
                 .statusCode(200);
     }

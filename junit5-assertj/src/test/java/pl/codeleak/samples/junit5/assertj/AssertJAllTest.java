@@ -76,12 +76,10 @@ class AssertJAllTest {
         Optional<Owner> result = testObj.findByName(givenName);
 
         // assert
-        assertThat(result).hasValueSatisfying(r -> {
-            assertAll(
-                    () -> assertThat(result.get().getFirstName()).isEqualTo(givenName),
-                    () -> assertThat(result.get().getCity()).isEqualTo(expectedCity),
-                    () -> assertThat(result.get().getAddress()).isEqualTo(expectedAddress)
-            );
-        });
+        assertThat(result).hasValueSatisfying(r -> assertAll(
+                () -> assertThat(r.getFirstName()).isEqualTo(givenName),
+                () -> assertThat(r.getCity()).isEqualTo(expectedCity),
+                () -> assertThat(r.getAddress()).isEqualTo(expectedAddress)
+        ));
     }
 }
