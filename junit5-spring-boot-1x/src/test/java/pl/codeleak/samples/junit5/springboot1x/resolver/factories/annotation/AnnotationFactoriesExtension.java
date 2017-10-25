@@ -9,7 +9,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import pl.codeleak.samples.junit5.springboot1x.domain.Owner;
 import pl.codeleak.samples.junit5.springboot1x.domain.OwnerRepository;
 import pl.codeleak.samples.junit5.springboot1x.domain.PetRepository;
-import pl.codeleak.samples.junit5.springboot1x.resolver.factories.mega.MegaFactory;
+import pl.codeleak.samples.junit5.springboot1x.resolver.factories.complex.ComplexFactory;
 
 public class AnnotationFactoriesExtension implements ParameterResolver {
 
@@ -21,21 +21,21 @@ public class AnnotationFactoriesExtension implements ParameterResolver {
 
     @Override
     public Object resolveParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
-        MegaFactory megaFactory = prepareMegaFactory(extensionContext);
+        ComplexFactory complexFactory = prepareMegaFactory(extensionContext);
         AnOwner anOwner = parameterContext.getParameter().getAnnotation(AnOwner.class);
 
-        return megaFactory.prepareNewOwner()
+        return complexFactory.prepareNewOwner()
                 .withName(anOwner.withName())
                 .withAddress(anOwner.withAddress())
                 .withPet(anOwner.withPetName())
                 .create();
     }
 
-    private MegaFactory prepareMegaFactory(ExtensionContext extensionContext) {
+    private ComplexFactory prepareMegaFactory(ExtensionContext extensionContext) {
         ApplicationContext context = SpringExtension.getApplicationContext(extensionContext);
         PetRepository petRepository = context.getBean(PetRepository.class);
         OwnerRepository ownerRepository = context.getBean(OwnerRepository.class);
 
-        return new MegaFactory(petRepository, ownerRepository);
+        return new ComplexFactory(petRepository, ownerRepository);
     }
 }

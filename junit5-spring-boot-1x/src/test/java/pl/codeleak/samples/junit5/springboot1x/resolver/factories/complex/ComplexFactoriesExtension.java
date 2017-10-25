@@ -1,4 +1,4 @@
-package pl.codeleak.samples.junit5.springboot1x.resolver.factories.mega;
+package pl.codeleak.samples.junit5.springboot1x.resolver.factories.complex;
 
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ParameterContext;
@@ -9,11 +9,11 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import pl.codeleak.samples.junit5.springboot1x.domain.OwnerRepository;
 import pl.codeleak.samples.junit5.springboot1x.domain.PetRepository;
 
-public class MegaFactoriesExtension implements ParameterResolver {
+public class ComplexFactoriesExtension implements ParameterResolver {
 
     @Override
     public boolean supportsParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
-        return parameterContext.getParameter().getType().isAssignableFrom(MegaFactory.class);
+        return parameterContext.getParameter().getType().isAssignableFrom(ComplexFactory.class);
     }
 
     @Override
@@ -22,6 +22,6 @@ public class MegaFactoriesExtension implements ParameterResolver {
         PetRepository petRepository = context.getBean(PetRepository.class);
         OwnerRepository ownerRepository = context.getBean(OwnerRepository.class);
 
-        return new MegaFactory(petRepository, ownerRepository);
+        return new ComplexFactory(petRepository, ownerRepository);
     }
 }

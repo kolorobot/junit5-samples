@@ -115,9 +115,7 @@ class NestedTestsTest {
             @BeforeEach
             void setUp() {
                 Optional<Pet> foundPet = testObj.findByName(givenName);
-
                 Assumptions.assumeTrue(foundPet.isPresent(), "Unable to run tests: pet to remove not found");
-
                 testObj.remove(foundPet.get());
             }
 
