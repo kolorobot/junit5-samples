@@ -16,6 +16,7 @@ import pl.codeleak.samples.shared.petclinic.repository.Visits;
 
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -25,16 +26,18 @@ class MockitoIntegrationTest {
 
     @InjectMocks
     private VisitNotificationService testObj;
+
     @Mock
     private Visits visits;
+
     @Mock
     private NotificationSender notificationSender;
 
     @Test
-    @DisplayName("Should send notification about the visit for given pet")
+    @DisplayName("Should send notification about the visit for a given pet")
     void sendsNotification(ArgumentCaptor<String> messageCaptor) {
         // arrange
-        String expectedName = "Maciek";
+        String expectedName = "New Pet";
         String expectedDate = "2017-10-26T19:00";
 
         Pet givenPet = Pets.aPet(expectedName, "1992-08-25");
@@ -47,8 +50,6 @@ class MockitoIntegrationTest {
 
         // assert
         verify(notificationSender).sendMessage(eq(expectedName), messageCaptor.capture());
-
-        String resultMessage = messageCaptor.getValue();
-        Assertions.assertTrue(resultMessage.contains(expectedDate));
+        assertTrue(messageCaptor.getValue().contains(expectedDate));
     }
 }

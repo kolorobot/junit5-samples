@@ -21,7 +21,7 @@ public class Pet extends NamedEntity {
     private final Set<Visit> visits;
 
     @Builder
-    public Pet(String name, LocalDate birthDate, PetType type, Owner owner, @Singular  Set<Visit> visits) {
+    public Pet(String name, LocalDate birthDate, PetType type, Owner owner, @Singular Set<Visit> visits) {
         super(name);
         this.birthDate = birthDate;
         this.type = type;
