@@ -29,6 +29,9 @@ allprojects {
     dependencies {
         /* The only one required dependency to get started with JUnit 5 */
         testCompile("org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}")
+
+        /* To avoid compiler warnings about @API annotations in JUnit code */
+        testCompileOnly('org.apiguardian:apiguardian-api:1.0.0')
     }
 }
 

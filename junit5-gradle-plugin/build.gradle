@@ -1,10 +1,17 @@
 junitPlatform {
     filters {
+        engines {
+            // include 'junit-jupiter', 'junit-vintage'
+            // exclude 'custom-engine'
+        }
         tags {
             include = ['smoke', 'fast']
             exclude 'slow'
         }
     }
+    // configurationParameter 'junit.jupiter.conditions.deactivate', '*'
+    // enableStandardTestTask true
+    // reportsDir file('build/test-results/junit-platform') // this is the default
     // logManager "org.apache.logging.log4j.jul.LogManager"
     // enableStandardTestTask true
 }
@@ -15,4 +22,8 @@ junitPlatformTest {
 
 dependencies {
     testCompile("org.junit.platform:junit-platform-suite-api:${junitPlatformVersion}")
+
+    // To use Log4J's LogManager
+    // testRuntime("org.apache.logging.log4j:log4j-core:2.9.1")
+    // testRuntime("org.apache.logging.log4j:log4j-jul:2.9.1")
 }
