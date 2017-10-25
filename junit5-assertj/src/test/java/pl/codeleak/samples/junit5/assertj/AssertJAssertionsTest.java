@@ -1,6 +1,5 @@
 package pl.codeleak.samples.junit5.assertj;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pl.codeleak.samples.shared.petclinic.model.Owner;
@@ -12,19 +11,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-class AssertJAllTest {
+class AssertJAssertionsTest {
 
     private final Owners testObj = new Owners();
 
-    // assert all assertJ style
     @Test
-    @DisplayName("Should find owner by its name")
-    @Disabled
-    void findsOwnerByName() {
+    @DisplayName("Should find owner by its name (AssertJ Soft Assertions)")
+    void findsOwnerByName1() {
         // arrange
         String givenName = "Jean";
-        String expectedCity = "Monona6";
-        String expectedAddress = "1056 N. Lake St.";
+        String expectedCity = "Monona";
+        String expectedAddress = "105 N. Lake St.";
 
         // act
         Optional<Owner> result = testObj.findByName(givenName);
@@ -39,15 +36,13 @@ class AssertJAllTest {
         });
     }
 
-    // combaining assertAll with assertJ
     @Test
-    @DisplayName("Should find owner by its name")
-    @Disabled
+    @DisplayName("Should find owner by its name (JUnit 5 + AssertJ)")
     void findsOwnerByName2() {
         // arrange
         String givenName = "Jean";
-        String expectedCity = "Monona6";
-        String expectedAddress = "1056 N. Lake St.";
+        String expectedCity = "Monona";
+        String expectedAddress = "105 N. Lake St.";
 
         // act
         Optional<Owner> result = testObj.findByName(givenName);
@@ -56,30 +51,28 @@ class AssertJAllTest {
         assertThat(result).isPresent();
 
         assertAll(
-                () -> assertThat(result.get().getFirstName()).isEqualTo(givenName),
-                () -> assertThat(result.get().getCity()).isEqualTo(expectedCity),
-                () -> assertThat(result.get().getAddress()).isEqualTo(expectedAddress)
+            () -> assertThat(result.get().getFirstName()).isEqualTo(givenName),
+            () -> assertThat(result.get().getCity()).isEqualTo(expectedCity),
+            () -> assertThat(result.get().getAddress()).isEqualTo(expectedAddress)
         );
     }
 
-    // even more assertAll with assertJ combining
     @Test
-    @DisplayName("Should find owner by its name")
-    @Disabled
+    @DisplayName("Should find owner by its name (AssertJ + JUnit 5)")
     void findsOwnerByName3() {
         // arrange
         String givenName = "Jean";
-        String expectedCity = "Monona6";
-        String expectedAddress = "1056 N. Lake St.";
+        String expectedCity = "Monona";
+        String expectedAddress = "105 N. Lake St.";
 
         // act
         Optional<Owner> result = testObj.findByName(givenName);
 
         // assert
-        assertThat(result).hasValueSatisfying(r -> assertAll(
-                () -> assertThat(r.getFirstName()).isEqualTo(givenName),
-                () -> assertThat(r.getCity()).isEqualTo(expectedCity),
-                () -> assertThat(r.getAddress()).isEqualTo(expectedAddress)
+        assertThat(result).hasValueSatisfying(owner -> assertAll(
+            () -> assertThat(owner.getFirstName()).isEqualTo(givenName),
+            () -> assertThat(owner.getCity()).isEqualTo(expectedCity),
+            () -> assertThat(owner.getAddress()).isEqualTo(expectedAddress)
         ));
     }
 }

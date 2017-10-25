@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public class Owners implements Repository<Owner> {
 
-    public static final String EXCEPTION_MESSAGE = "Write is not allowed";
+    public static final String OPERATION_NOT_SUPPORTED_MESSAGE = "Operation not supported!";
 
     private static List<Owner> owners =
         Arrays.asList(
@@ -41,12 +41,12 @@ public class Owners implements Repository<Owner> {
 
     @Override
     public void add(Owner entity) {
-        throw new UnsupportedOperationException(EXCEPTION_MESSAGE);
+        throw new UnsupportedOperationException(OPERATION_NOT_SUPPORTED_MESSAGE);
     }
 
     public Optional<Owner> findByName(String firstName) {
         return findAll().stream()
-                .filter(o -> o.getFirstName().equalsIgnoreCase(firstName))
-                .findFirst();
+                        .filter(o -> o.getFirstName().equalsIgnoreCase(firstName))
+                        .findFirst();
     }
 }

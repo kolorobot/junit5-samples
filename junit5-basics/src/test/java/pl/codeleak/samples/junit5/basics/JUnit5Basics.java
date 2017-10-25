@@ -20,13 +20,18 @@ class JUnit5Basics {
         System.out.println("Test is running");
     }
 
+    @Test
+    public void testCanBePublicTestButWhy() {
+        System.out.println("Test is running");
+    }
+
     @DisplayName("My #2 JUnit5 test")
     @Test
     void testWithCustomDisplayName() {
         System.out.println("Test is running");
     }
 
-    @DisplayName("Tagged JUnit5 test ")
+    @DisplayName("Tagged JUnit5 test")
     @Tag("cool")
     @Test
     void tagged() {

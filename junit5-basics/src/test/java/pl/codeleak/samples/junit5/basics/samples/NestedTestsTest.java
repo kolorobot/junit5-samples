@@ -1,4 +1,4 @@
-package pl.codeleak.samples.junit5.basics.samples.nested;
+package pl.codeleak.samples.junit5.basics.samples;
 
 import org.junit.jupiter.api.*;
 import pl.codeleak.samples.shared.petclinic.model.Pet;
@@ -11,23 +11,23 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-// nested tests, badający repozytoria
 @DisplayName("Pets repository")
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class NestedTestsTest {
 
     private Pets testObj;
 
+    @BeforeAll
+    void beforeAll() {
+        testObj = new Pets();
+    }
+
     @Nested
-    @DisplayName("when new")
+    @DisplayName("when new instance created")
     class WhenNew {
 
-        @BeforeEach
-        void setUp() {
-            testObj = new Pets();
-        }
-
         @Test
-        @DisplayName("has thirteen associated pets")
+        @DisplayName("has 13 associated pets")
         void hasThirteenPets() {
             // act
             List<Pet> result = testObj.findAll();
@@ -37,7 +37,7 @@ class NestedTestsTest {
         }
 
         @Test
-        @DisplayName("returns associated pet by its name")
+        @DisplayName("existing pet can be found by its name")
         void findsExistingPet() {
             // arrange
             String givenName = "Rosy";
@@ -49,16 +49,16 @@ class NestedTestsTest {
             // assert
             assertTrue(result.isPresent());
             assertAll(
-                    () -> assertEquals(result.get().getName(), givenName),
-                    () -> assertEquals(result.get().getBirthDate(), expectedBirthDate)
+                () -> assertEquals(result.get().getName(), givenName),
+                () -> assertEquals(result.get().getBirthDate(), expectedBirthDate)
             );
         }
 
         @Test
-        @DisplayName("returns empty optional when unable to find pet")
+        @DisplayName("non existing pet will not be found")
         void doesNotFindExistingPet() {
             // arrange
-            String givenName = "Maciek";
+            String givenName = "Anonymous";
 
             // act
             Optional<Pet> result = testObj.findByName(givenName);
@@ -68,10 +68,10 @@ class NestedTestsTest {
         }
 
         @Nested
-        @DisplayName("after add")
+        @DisplayName("and when new pet is added")
         class AfterAdd {
 
-            private Pet givenPet = Pets.aPet("Maciek", "1992-08-25");
+            private Pet givenPet = Pets.aPet("Tester", "1992-08-25");
 
             @BeforeEach
             void setUp() {
@@ -79,26 +79,23 @@ class NestedTestsTest {
             }
 
             @Test
-            @DisplayName("has fourteen associated pets")
+            @DisplayName("14 pets exist")
             void hasFourteenPets() {
                 // act
                 List<Pet> result = testObj.findAll();
 
                 // assert
                 assertAll(
-                        () -> assertEquals(14, result.size()),
-                        () -> assertTrue(result.contains(givenPet))
+                    () -> assertEquals(14, result.size()),
+                    () -> assertTrue(result.contains(givenPet))
                 );
             }
 
             @Test
-            @DisplayName("returns new pet by its name")
+            @DisplayName("it can be found by its name")
             void findsNewPet() {
-                // arrange
-                String givenName = "Maciek";
-
                 // act
-                Optional<Pet> result = testObj.findByName(givenName);
+                Optional<Pet> result = testObj.findByName(givenPet.getName());
 
                 // assert
                 assertTrue(result.isPresent());
@@ -107,30 +104,22 @@ class NestedTestsTest {
         }
 
         @Nested
-        @DisplayName("after remove")
+        @DisplayName("and when a pet is removed")
         class AfterRemove {
 
             private String givenName = "Freddy";
 
             @BeforeEach
             void setUp() {
-                Optional<Pet> foundPet = testObj.findByName(givenName);
-                Assumptions.assumeTrue(foundPet.isPresent(), "Unable to run tests: pet to remove not found");
-                testObj.remove(foundPet.get());
+                Optional<Pet> optionalPet = testObj.findByName(givenName);
+
+                Assumptions.assumeTrue(optionalPet.isPresent(), "No pet with given name exists!");
+
+                testObj.remove(optionalPet.get());
             }
 
             @Test
-            @DisplayName("has twelve associated pets")
-            void hasTwelvePets() {
-                // act
-                List<Pet> result = testObj.findAll();
-
-                // assert
-                assertEquals(result.size(), 12);
-            }
-
-            @Test
-            @DisplayName("returns empty optional")
+            @DisplayName("it can't be found anymore")
             void doesNotFindRemovedPet() {
                 // act
                 Optional<Pet> result = testObj.findByName(givenName);

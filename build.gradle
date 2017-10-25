@@ -1,5 +1,4 @@
 buildscript {
-
     ext {
         junitPlatformVersion = junitPlatformVersion
         junitJupiterVersion = junitJupiterVersion
@@ -29,7 +28,7 @@ allprojects {
 
     dependencies {
         /* The only one required dependency to get started with JUnit 5 */
-        testCompile ("org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}")
+        testCompile("org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}")
     }
 }
 
@@ -40,7 +39,7 @@ project(":shared") {
     }
 }
 
-configure(subprojects.findAll{it.name != 'shared'}) {
+configure(subprojects.findAll { it.name != 'shared' }) {
     dependencies {
         compile project(":shared")
     }

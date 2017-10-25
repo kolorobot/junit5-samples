@@ -6,10 +6,10 @@ import pl.codeleak.samples.shared.petclinic.repository.Pets;
 import pl.codeleak.samples.shared.petclinic.service.VisitScheduleService;
 
 import java.time.LocalDateTime;
+import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
-// zle napisany serwis im dluzsza nazwa peta tym dluzej sie wykonuje
-public class BadlyWrittenScheduleService implements VisitScheduleService {
+class BadlyWrittenScheduleService implements VisitScheduleService {
 
     private final AtomicInteger visitsMade = new AtomicInteger();
 
@@ -18,25 +18,25 @@ public class BadlyWrittenScheduleService implements VisitScheduleService {
         String petName = pet.getName();
         Pet foundPet = Pets.byName(petName).get();
         LocalDateTime visitDate = LocalDateTime.now().plusDays(foundPet.getName().length());
+
         visitsMade.incrementAndGet();
 
-        badlyWrittenVisitSql(foundPet);
+        simulateLongOperation(foundPet);
 
         return Visit.builder()
-                .pet(foundPet)
-                .date(visitDate)
-                .build();
+                    .pet(foundPet)
+                    .date(visitDate)
+                    .build();
     }
 
-    public int getMadeVisits() {
+    int getMadeVisits() {
         return visitsMade.get();
     }
 
-    private void badlyWrittenVisitSql(Pet foundPet) {
+    private void simulateLongOperation(Pet foundPet) {
         try {
-            Thread.sleep(foundPet.getName().length() * 100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.sleep(foundPet.getName().length() * 150 + new Random().nextInt(350));
+        } catch (InterruptedException ignored) {
         }
     }
 }
