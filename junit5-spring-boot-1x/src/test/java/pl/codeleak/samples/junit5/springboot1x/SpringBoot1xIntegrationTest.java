@@ -15,8 +15,6 @@ import pl.codeleak.samples.junit5.springboot1x.domain.PetRepository;
 @ExtendWith(SpringExtension.class)
 class SpringBoot1xIntegrationTest {
 
-    // przykład pokazujący jak proste używanie jest spring extension, od razu jest wstrzykiwanie i te sprawy jak z runnerem
-
     @Autowired
     private OwnerRepository ownerRepository;
     @Autowired

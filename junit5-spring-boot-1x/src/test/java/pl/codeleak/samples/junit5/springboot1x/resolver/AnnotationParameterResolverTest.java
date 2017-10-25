@@ -12,11 +12,6 @@ import pl.codeleak.samples.junit5.springboot1x.domain.PetRepository;
 import pl.codeleak.samples.junit5.springboot1x.resolver.factories.annotation.AnOwner;
 import pl.codeleak.samples.junit5.springboot1x.resolver.factories.annotation.AnnotationFactoriesExtension;
 
-
-//@JugIntegrationTest
-// adnotacja zbiorcza zeby nie kopiować ciągle tego samego
-
-// przykład jak wszystko można uprościć jescze bardziej i tworzyć obiekty przy pomocy adnotacji
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 @ExtendWith(AnnotationFactoriesExtension.class)

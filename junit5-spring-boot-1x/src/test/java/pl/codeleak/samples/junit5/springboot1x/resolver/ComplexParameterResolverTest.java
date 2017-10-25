@@ -8,15 +8,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import pl.codeleak.samples.junit5.springboot1x.domain.OwnerRepository;
 import pl.codeleak.samples.junit5.springboot1x.domain.PetRepository;
-import pl.codeleak.samples.junit5.springboot1x.resolver.factories.mega.MegaFactoriesExtension;
-import pl.codeleak.samples.junit5.springboot1x.resolver.factories.mega.MegaFactory;
+import pl.codeleak.samples.junit5.springboot1x.resolver.factories.complex.ComplexFactoriesExtension;
+import pl.codeleak.samples.junit5.springboot1x.resolver.factories.complex.ComplexFactory;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
-@ExtendWith(MegaFactoriesExtension.class)
-// przykład jak połączyć nasze własne extension z tym springowym i ukryć tworzenie skomplikowanych obiektów domenowych za
-// fasadą faktorek, builderów i zrozumiałego API
-class MegaParameterResolverTest {
+@ExtendWith(ComplexFactoriesExtension.class)
+class ComplexParameterResolverTest {
 
     @Autowired
     private PetRepository petRepository;
@@ -24,9 +22,9 @@ class MegaParameterResolverTest {
     private OwnerRepository ownerRepository;
 
     @Test
-    void megaParameterTest(MegaFactory megaFactory,
-                           TestReporter testReporter) {
-        megaFactory.prepareNewOwner()
+    void complexParameterTest(ComplexFactory complexFactory,
+                              TestReporter testReporter) {
+        complexFactory.prepareNewOwner()
                 .withName("Maciek")
                 .withAddress("Gdańsk")
                 .withPet("Pies")

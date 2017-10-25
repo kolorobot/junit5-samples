@@ -1,4 +1,4 @@
-package pl.codeleak.samples.junit5.springboot1x.resolver.factories.mega;
+package pl.codeleak.samples.junit5.springboot1x.resolver.factories.complex;
 
 import pl.codeleak.samples.junit5.springboot1x.domain.Owner;
 import pl.codeleak.samples.junit5.springboot1x.domain.OwnerRepository;
@@ -7,36 +7,36 @@ import pl.codeleak.samples.junit5.springboot1x.domain.PetRepository;
 
 import java.util.Optional;
 
-public class MegaFactory {
+public class ComplexFactory {
 
     private final PetRepository petRepository;
     private final OwnerRepository ownerRepository;
 
-    public MegaFactory(PetRepository petRepository, OwnerRepository ownerRepository) {
+    public ComplexFactory(PetRepository petRepository, OwnerRepository ownerRepository) {
         this.petRepository = petRepository;
         this.ownerRepository = ownerRepository;
     }
 
-    public MegaOwnerFactory prepareNewOwner() {
-        return new MegaOwnerFactory();
+    public ComplexOwnerFactory prepareNewOwner() {
+        return new ComplexOwnerFactory();
     }
 
-    public class MegaOwnerFactory {
+    public class ComplexOwnerFactory {
 
         private Owner owner = new Owner();
         private Optional<Pet> pet = Optional.empty();
 
-        public MegaOwnerFactory withName(String name) {
+        public ComplexOwnerFactory withName(String name) {
             owner.setName(name);
             return this;
         }
 
-        public MegaOwnerFactory withAddress(String address) {
+        public ComplexOwnerFactory withAddress(String address) {
             owner.setAddress(address);
             return this;
         }
 
-        public MegaOwnerFactory withPet(String name) {
+        public ComplexOwnerFactory withPet(String name) {
             Pet pet = new Pet();
             pet.setName(name);
 
