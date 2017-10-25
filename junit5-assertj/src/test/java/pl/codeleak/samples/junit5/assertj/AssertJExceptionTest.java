@@ -40,6 +40,4 @@ class AssertJExceptionTest {
     }
 
     // podsumowanie co i jak my używamy
-
-
 }

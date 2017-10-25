@@ -9,7 +9,7 @@ public class Pets implements Repository<Pet> {
 
     private static List<Pet> pets = new ArrayList<>(Arrays.asList(
         aPet("Leo", "2013-09-07"),
-        aPet("Basil", "2014-08-06"), // TODO: 21.10.2017 na prezentacji będzie trzeba zmienic nazwe tego pieska
+        aPet("Basil", "2014-08-06"),
         aPet("Rosy", "2015-04-17"),
         aPet("Jewel", "2014-03-07"),
         aPet("Iggy", "2014-11-30"),

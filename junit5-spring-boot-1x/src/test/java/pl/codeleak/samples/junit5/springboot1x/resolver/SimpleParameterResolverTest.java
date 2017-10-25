@@ -17,7 +17,6 @@ import pl.codeleak.samples.junit5.springboot1x.resolver.factories.PetsFactory;
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 @ExtendWith(FactoriesExtension.class)
-// proste factory jako parameter resolver -> plus podwójny extend with ale to fajnie jakby było ukryte żeby nie psuć niespodzianku
 class SimpleParameterResolverTest {
 
     @Test
@@ -37,11 +36,14 @@ class SimpleParameterResolverTest {
                              PetsFactory petsFactory,
                              TestReporter testReporter) {
 
-        Pet pet = petRepository.save(petsFactory.createPet("Pies"));
-        Owner owner = ownerRepository.save(ownersFactory.createOwner("Maciek", "Gdańsk", pet));
+        Pet pet = petsFactory.createPet("Pies");
+        Owner owner = ownersFactory.createOwner("Maciek", "Gdańsk", pet);
 
-        testReporter.publishEntry("Pet", pet.toString());
-        testReporter.publishEntry("Owner", owner.toString());
+        Pet savedPet = petRepository.save(pet);
+        Owner savedOwner = ownerRepository.save(owner);
+
+        testReporter.publishEntry("Pet", savedPet.toString());
+        testReporter.publishEntry("Owner", savedOwner.toString());
     }
 
     @Autowired

@@ -3,6 +3,7 @@ package pl.codeleak.samples.shared.petclinic.model;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import pl.codeleak.samples.shared.petclinic.repository.VisitType;
 
 import java.time.LocalDateTime;
 
@@ -16,5 +17,7 @@ public class Visit extends BaseEntity {
     private final String description;
 
     private final Pet pet;
+
+    private final VisitType visitType;
 
 }
