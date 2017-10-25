@@ -4,8 +4,11 @@ import pl.codeleak.samples.shared.petclinic.model.Owner;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class Owners implements Repository<Owner> {
+
+    public static final String EXCEPTION_MESSAGE = "Write is not allowed";
 
     private static List<Owner> owners =
         Arrays.asList(
@@ -34,5 +37,16 @@ public class Owners implements Repository<Owner> {
     @Override
     public List<Owner> findAll() {
         return owners;
+    }
+
+    @Override
+    public void add(Owner entity) {
+        throw new UnsupportedOperationException(EXCEPTION_MESSAGE);
+    }
+
+    public Optional<Owner> findByName(String firstName) {
+        return findAll().stream()
+                .filter(o -> o.getFirstName().equalsIgnoreCase(firstName))
+                .findFirst();
     }
 }

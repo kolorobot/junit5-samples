@@ -1,5 +1,18 @@
 package pl.codeleak.samples.junit5.restassured;
 
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+
+import static io.restassured.RestAssured.get;
+
+@ExtendWith(RestAssuredExtension.class)
 class RestAssuredIntegrationTest {
-    // TODO
+
+    @Test
+    void name() {
+        get("Some_Test")
+                .then()
+                .statusCode(200);
+    }
 }
