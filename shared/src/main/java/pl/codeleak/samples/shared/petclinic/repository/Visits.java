@@ -28,8 +28,8 @@ public class Visits implements Repository<Visit> {
 
     public Optional<Visit> findByPet(Pet pet) {
         return visits.stream()
-                .filter(v -> v.getPet().equals(pet))
-                .findFirst();
+                     .filter(v -> v.getPet().equals(pet))
+                     .findFirst();
     }
 
     @Override

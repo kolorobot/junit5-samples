@@ -7,8 +7,6 @@ public class PetsFactory {
     public Pet createPet(String name) {
         Pet pet = new Pet();
         pet.setName(name);
-
         return pet;
     }
-
 }

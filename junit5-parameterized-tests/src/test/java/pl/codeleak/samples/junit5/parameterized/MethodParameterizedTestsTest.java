@@ -33,16 +33,12 @@ class MethodParameterizedTestsTest {
 
     private static Stream<Arguments> petsProvider() {
         return Stream.of(
-                Arguments.of(Pets.byName("Freddy").get(), LocalDateTime.parse("2017-01-06T10:00:00"), false),
-                Arguments.of(Pets.byName("Freddy").get(), LocalDateTime.parse("2017-11-06T10:00:00"), true),
-                Arguments.of(Pets.byName("Mulligan").get(), LocalDateTime.parse("2017-01-06T10:00:00"), true),
-                Arguments.of(Pets.byName("Leo").get(), LocalDateTime.parse("2017-01-03T10:00:00"), false)
+            Arguments.of(Pets.byName("Freddy").get(), LocalDateTime.parse("2017-01-06T10:00:00"), false),
+            Arguments.of(Pets.byName("Freddy").get(), LocalDateTime.parse("2017-11-06T10:00:00"), true),
+            Arguments.of(Pets.byName("Mulligan").get(), LocalDateTime.parse("2017-01-06T10:00:00"), true),
+            Arguments.of(Pets.byName("Leo").get(), LocalDateTime.parse("2017-01-03T10:00:00"), false)
         );
     }
-
-
-
-
 
 
 }

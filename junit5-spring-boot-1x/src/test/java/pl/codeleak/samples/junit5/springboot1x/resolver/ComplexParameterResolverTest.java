@@ -25,11 +25,12 @@ class ComplexParameterResolverTest {
     void complexParameterTest(ComplexFactory complexFactory,
                               TestReporter testReporter) {
         complexFactory.prepareNewOwner()
-                .withName("Maciek")
-                .withAddress("Gdańsk")
-                .withPet("Pies")
-                .create();
+                      .withName("Peter McTavish")
+                      .withAddress("2387 S. Fair Way Madison")
+                      .withPet("Iggy")
+                      .create();
 
+        // FIXME Assert
         testReporter.publishEntry("Pet", petRepository.findAll().toString());
         testReporter.publishEntry("Owner", ownerRepository.findAll().toString());
     }

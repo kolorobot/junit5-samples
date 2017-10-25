@@ -16,7 +16,7 @@ public class AnnotationFactoriesExtension implements ParameterResolver {
     @Override
     public boolean supportsParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
         return parameterContext.getParameter().getType().isAssignableFrom(Owner.class) &&
-                parameterContext.getParameter().isAnnotationPresent(AnOwner.class);
+            parameterContext.getParameter().isAnnotationPresent(AnOwner.class);
     }
 
     @Override
@@ -25,10 +25,10 @@ public class AnnotationFactoriesExtension implements ParameterResolver {
         AnOwner anOwner = parameterContext.getParameter().getAnnotation(AnOwner.class);
 
         return complexFactory.prepareNewOwner()
-                .withName(anOwner.withName())
-                .withAddress(anOwner.withAddress())
-                .withPet(anOwner.withPetName())
-                .create();
+                             .withName(anOwner.withName())
+                             .withAddress(anOwner.withAddress())
+                             .withPet(anOwner.withPetName())
+                             .create();
     }
 
     private ComplexFactory prepareMegaFactory(ExtensionContext extensionContext) {

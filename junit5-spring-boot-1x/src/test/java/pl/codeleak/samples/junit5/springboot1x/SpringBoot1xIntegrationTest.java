@@ -17,18 +17,20 @@ class SpringBoot1xIntegrationTest {
 
     @Autowired
     private OwnerRepository ownerRepository;
+
     @Autowired
     private PetRepository petRepository;
 
+    // TODO Improve
     @Test
     void contextLoads(TestReporter testReporter) {
         Pet pet = new Pet();
-        pet.setName("Pies");
+        pet.setName("Jewel");
         Pet savedPet = petRepository.save(pet);
 
         Owner owner = new Owner();
-        owner.setName("Maciek");
-        owner.setAddress("Gdańsk");
+        owner.setName("Jeff Black");
+        owner.setAddress("1450 Oak Blvd. Monona");
         owner.setPet(savedPet);
 
         ownerRepository.save(owner);

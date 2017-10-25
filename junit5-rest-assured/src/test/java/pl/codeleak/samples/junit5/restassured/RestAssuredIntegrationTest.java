@@ -9,11 +9,12 @@ import static io.restassured.RestAssured.get;
 @ExtendWith(RestAssuredExtension.class)
 class RestAssuredIntegrationTest {
 
+    // see RestAssuredExtension
     @Test
-    void name() {
+    void executesGetAsExternallyConfigured() {
         get()
-                .then()
-                .log().all()
-                .statusCode(200);
+            .then()
+            .log().all()
+            .statusCode(200);
     }
 }
