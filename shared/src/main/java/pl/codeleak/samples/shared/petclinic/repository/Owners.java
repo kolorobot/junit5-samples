@@ -4,11 +4,10 @@ import pl.codeleak.samples.shared.petclinic.model.Owner;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 public class Owners implements Repository<Owner> {
-
-    public static final String OPERATION_NOT_SUPPORTED_MESSAGE = "Operation not supported!";
 
     private static List<Owner> owners =
         Arrays.asList(
@@ -34,14 +33,17 @@ public class Owners implements Repository<Owner> {
                     .build();
     }
 
-    @Override
-    public List<Owner> findAll() {
-        return owners;
+    public static Owner byName(String fullName) {
+        String[] names = fullName.split(" ");
+        return owners.stream()
+                     .filter(owner -> Objects.equals(names[0], owner.getFirstName()))
+                     .filter(owner -> Objects.equals(names[1], owner.getLastName()))
+                     .findFirst().get();
     }
 
     @Override
-    public void add(Owner entity) {
-        throw new UnsupportedOperationException(OPERATION_NOT_SUPPORTED_MESSAGE);
+    public List<Owner> findAll() {
+        return owners;
     }
 
     public Optional<Owner> findByName(String firstName) {

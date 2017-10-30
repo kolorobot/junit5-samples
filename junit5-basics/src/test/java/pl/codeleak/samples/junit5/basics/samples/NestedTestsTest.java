@@ -71,7 +71,7 @@ class NestedTestsTest {
         @DisplayName("and when new pet is added")
         class AfterAdd {
 
-            private Pet givenPet = Pets.aPet("Tester", "1992-08-25");
+            private Pet givenPet = Pets.aPet("New Pet", "1992-08-25", "David Schroeder");
 
             @BeforeEach
             void setUp() {

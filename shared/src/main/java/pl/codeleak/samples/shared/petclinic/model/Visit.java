@@ -12,12 +12,16 @@ import java.time.LocalDateTime;
 @Builder
 public class Visit extends BaseEntity {
 
-    private final LocalDateTime date;
+    private LocalDateTime date;
 
-    private final String description;
+    private String description;
 
-    private final Pet pet;
+    private Pet pet;
 
-    private final VisitType visitType;
+    private VisitType visitType;
 
+    public void setPet(Pet pet) {
+        this.pet = pet;
+        this.pet.addVisit(this);
+    }
 }

@@ -3,29 +3,37 @@ package pl.codeleak.samples.shared.petclinic.model;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Singular;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class Pet extends NamedEntity {
 
-    private final LocalDate birthDate;
+    private LocalDate birthDate;
 
-    private final PetType type;
+    private PetType type;
 
-    private final Owner owner;
+    private Owner owner;
 
-    private final Set<Visit> visits;
+    private Set<Visit> visits = new HashSet<>();
 
     @Builder
-    public Pet(String name, LocalDate birthDate, PetType type, Owner owner, @Singular Set<Visit> visits) {
+    public Pet(String name, LocalDate birthDate, PetType type, Owner owner) {
         super(name);
         this.birthDate = birthDate;
         this.type = type;
         this.owner = owner;
-        this.visits = visits;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
+        // this.owner.addPet(this);
+    }
+
+    public void addVisit(Visit visit) {
+        this.visits.add(visit);
     }
 }

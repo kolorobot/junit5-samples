@@ -37,11 +37,11 @@ class MockitoIntegrationTest {
     @DisplayName("Should send notification about the visit for a given pet")
     void sendsNotification(ArgumentCaptor<String> messageCaptor) {
         // arrange
-        String expectedName = "New Pet";
-        String expectedDate = "2017-10-26T19:00";
+        String petName = "Leo";
+        String visitDate = "2017-10-26T19:00";
 
-        Pet givenPet = Pets.aPet(expectedName, "1992-08-25");
-        Visit givenVisit = Visits.aVisit(expectedDate, "Control visit", givenPet, VisitType.DIAGNOSTICS);
+        Pet givenPet = Pets.byName(petName).get();
+        Visit givenVisit = Visits.aVisit(visitDate, "Just a visit", petName, VisitType.DIAGNOSTICS);
 
         when(visits.findByPet(givenPet)).thenReturn(Optional.of(givenVisit));
 
@@ -49,7 +49,7 @@ class MockitoIntegrationTest {
         testObj.notifyAboutVisit(givenPet);
 
         // assert
-        verify(notificationSender).sendMessage(eq(expectedName), messageCaptor.capture());
-        assertTrue(messageCaptor.getValue().contains(expectedDate));
+        verify(notificationSender).sendMessage(eq(petName), messageCaptor.capture());
+        assertTrue(messageCaptor.getValue().contains(visitDate));
     }
 }
