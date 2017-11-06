@@ -22,9 +22,4 @@ public class PetClinic {
     public Visits getVisits() {
         return visits;
     }
-
-    public static void main(String[] args) {
-        PetClinic petClinic = new PetClinic();
-
-    }
 }
