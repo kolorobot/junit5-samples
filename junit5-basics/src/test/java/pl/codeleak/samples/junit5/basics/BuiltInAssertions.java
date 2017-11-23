@@ -30,20 +30,31 @@ class BuiltInAssertions {
     @DisplayName("assertAll")
     @Test
     void assertAll() {
-        // act
         List<String> owners = Arrays.asList("Betty Davis", "Eduardo Rodriquez");
 
         // assert
-
-        // 2 errors will be reported
-        // Assertions.assertAll("owners",
-        //     () -> Assertions.assertNotNull(null),
-        //     () -> Assertions.assertTrue(false)
-        // );
-
         Assertions.assertAll(
-            () -> Assertions.assertNotNull(null, "May not be null"),
-            () -> Assertions.assertTrue(false, "Must be true")
+            () -> Assertions.assertTrue(owners.contains("Betty Doe"), "Contains Betty Doe"),
+            () -> Assertions.assertTrue(owners.contains("John Doe"), "Continas John Doe"),
+            () -> Assertions.assertTrue(owners.contains("Eduardo Rodriquez"), "Eduardo Rodriquez")
+        );
+    }
+
+    @DisplayName("assertAll (dependent)")
+    @Test
+    void assertAllDependent() {
+        List<String> owners = Arrays.asList("Betty Davis", "Eduardo Rodriquez");
+
+        // assert
+        Assertions.assertAll(
+            () -> {
+                Assertions.assertTrue(owners.contains("Betty Doe"), "Contains Betty Doe");
+
+                Assertions.assertAll(
+                    () -> Assertions.assertNotNull(owners),
+                    () -> Assertions.assertTrue(owners.size() > 1)
+                );
+            }
         );
     }
 

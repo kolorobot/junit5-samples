@@ -29,10 +29,10 @@ class AssertJAssertionsTest {
         // assert
         assertThat(result).isPresent();
 
-        assertSoftly(softly -> {
-            softly.assertThat(result.get().getFirstName()).isEqualTo(givenName);
-            softly.assertThat(result.get().getCity()).isEqualTo(expectedCity);
-            softly.assertThat(result.get().getAddress()).isEqualTo(expectedAddress);
+        assertSoftly(softAssertions -> {
+            softAssertions.assertThat(result.get().getFirstName()).isEqualTo(givenName);
+            softAssertions.assertThat(result.get().getCity()).isEqualTo(expectedCity);
+            softAssertions.assertThat(result.get().getAddress()).isEqualTo(expectedAddress);
         });
     }
 
