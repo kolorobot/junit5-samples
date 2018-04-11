@@ -17,7 +17,7 @@ import java.lang.annotation.*;
 
 @DemoTest
 @DisplayName("Junit5 - Custom composed annotation")
-class JUnit5PerClassLifecycleWithCustomComposedAnnotation {
+class SomeTest {
 
     private Object first = new Object();
     private Object second;

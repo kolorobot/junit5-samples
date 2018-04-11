@@ -1,6 +1,5 @@
 package pl.codeleak.samples.junit5.gradle;
 
-import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.Test;
 import pl.codeleak.samples.junit5.gradle.support.Smoke;
 

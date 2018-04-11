@@ -2,8 +2,8 @@ buildscript {
     ext {
         junitPlatformVersion = junitPlatformVersion
         junitJupiterVersion = junitJupiterVersion
+        kotlinVersion = kotlinVersion
     }
-
     repositories {
         mavenCentral()
     }
@@ -50,5 +50,5 @@ configure(subprojects.findAll { it.name != 'shared' }) {
 
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '4.1'
+    gradleVersion = '4.6'
 }

@@ -2,7 +2,7 @@ package pl.codeleak.samples.junit5.basics;
 
 import org.junit.jupiter.api.*;
 
-class JUnit5BuiltInParameterResolution {
+class _3_JUnit5BuiltInParameterResolution {
 
     @BeforeAll
     static void beforeAll(TestInfo testInfo) {

@@ -6,8 +6,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assumptions.assumingThat;
 
-class AssumptionsBasics {
+class AssumptionInBeforeAll {
 
     @BeforeAll
     static void beforeAll() {
@@ -18,6 +20,17 @@ class AssumptionsBasics {
 
     @Test
     void test() {
-        assertTrue(false);
+        fail("Simply fails, but only on Linux");
+    }
+}
+
+class AssertAssumingThat {
+    @Test
+    void test() {
+        String osName = System.getProperty("os.name");
+        assumingThat(osName.matches("Windows"), () -> {
+            // perform these assertions only on Windows
+            assertTrue(true);
+        });
     }
 }

@@ -3,7 +3,7 @@ package pl.codeleak.samples.junit5.basics;
 import org.junit.jupiter.api.*;
 
 @DisplayName("JUnit5 - Test basics")
-class JUnit5Basics {
+class _1_JUnit5Basics {
 
     @BeforeAll
     static void beforeAll() {

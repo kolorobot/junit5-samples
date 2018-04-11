@@ -1,4 +1,4 @@
-package pl.codeleak.samples.junit5.basics.samples;
+package pl.codeleak.samples.junit5.basics;
 
 import org.junit.jupiter.api.*;
 import pl.codeleak.samples.shared.petclinic.model.Pet;
@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Pets repository")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class NestedTestsTest {
+class _8_NestedTestsTest {
 
     private Pets testObj;
 

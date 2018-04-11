@@ -5,7 +5,7 @@ import org.junit.jupiter.api.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @DisplayName("JUnit5 - Test lifecycle adjustments")
-class JUnit5PerClassLifecycle {
+class _4_JUnit5PerClassLifecycle {
 
     private Object first = new Object();
     private Object second;

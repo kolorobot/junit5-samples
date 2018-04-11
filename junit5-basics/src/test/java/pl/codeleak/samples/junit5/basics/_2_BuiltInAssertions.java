@@ -10,7 +10,7 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 
-class BuiltInAssertions {
+class _2_BuiltInAssertions {
 
     @Test
     void basicAssertions() {
