@@ -8,7 +8,7 @@ import pl.codeleak.samples.shared.petclinic.repository.VisitType;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class EnumParameterizedTestsTest {
+class _3_EnumParameterizedTests {
 
     private final VisitsValidator validator = new VisitsValidator();
 
@@ -16,7 +16,7 @@ class EnumParameterizedTestsTest {
     @DisplayName("Can schedule visit of type")
     @ParameterizedTest
     @EnumSource(VisitType.class)
-    void enumParametrized(VisitType givenType) {
+    void enumParameterized(VisitType givenType) {
         // act
         boolean result = validator.canScheduleVisit(givenType);
 
@@ -27,7 +27,7 @@ class EnumParameterizedTestsTest {
     @DisplayName("Can schedule visit of type")
     @ParameterizedTest
     @EnumSource(value = VisitType.class, names = {"CONSULTATION", "DIAGNOSTICS"})
-    void enumIncludeParametrized(VisitType givenType) {
+    void enumIncludeParameterized(VisitType givenType) {
         // act
         boolean result = validator.canScheduleVisit(givenType);
 
@@ -39,7 +39,7 @@ class EnumParameterizedTestsTest {
     @DisplayName("Can schedule visit of type")
     @ParameterizedTest
     @EnumSource(value = VisitType.class, names = "SURGERY", mode = EnumSource.Mode.EXCLUDE)
-    void enumExcludeParametrized(VisitType givenType) {
+    void enumExcludeParameterized(VisitType givenType) {
         // act
         boolean result = validator.canScheduleVisit(givenType);
 

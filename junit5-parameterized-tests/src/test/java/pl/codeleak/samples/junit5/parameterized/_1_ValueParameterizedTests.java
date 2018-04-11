@@ -6,14 +6,14 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class ValueParameterizedTestsTest {
+class _1_ValueParameterizedTests {
 
     private final VisitsValidator validator = new VisitsValidator();
 
     @DisplayName("Has visit with description containing given phrase")
     @ParameterizedTest(name = "Given phrase is {arguments}")
     @ValueSource(strings = {"neu", "spa", "shot"})
-    void valueParametrized(String givenDescription) {
+    void valueSourceParametrized(String givenDescription) {
         // act
         boolean result = validator.hasVisitWithDescription(givenDescription);
 
