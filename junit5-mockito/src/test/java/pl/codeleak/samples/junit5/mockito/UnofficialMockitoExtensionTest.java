@@ -1,7 +1,6 @@
 package pl.codeleak.samples.junit5.mockito;
 
 import name.falgout.jeffrey.testing.junit5.MockitoExtension;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -22,7 +21,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class MockitoIntegrationTest {
+class UnofficialMockitoExtensionTest {
 
     @InjectMocks
     private VisitNotificationService testObj;

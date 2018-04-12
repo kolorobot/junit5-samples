@@ -1,5 +1,5 @@
 dependencies {
     testCompile "org.mockito:mockito-core:2.18.0"
+    testCompile "org.mockito:mockito-junit-jupiter:2.18.0"
     testCompile "name.falgout.jeffrey.testing.junit5:mockito-extension:1.0.0"
-
 }
