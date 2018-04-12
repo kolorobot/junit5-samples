@@ -9,13 +9,13 @@ import java.util.Optional;
 public class RestAssuredExtension implements BeforeAllCallback {
 
     @Override
-    public void beforeAll(ExtensionContext context) throws Exception {
+    public void beforeAll(ExtensionContext context) {
         Optional<Integer> port = Optional.ofNullable(System.getProperty("port")).map(Integer::valueOf);
         Optional<String> baseUri = Optional.ofNullable(System.getProperty("baseUri"));
         Optional<String> rootPath = Optional.ofNullable(System.getProperty("rootPath"));
 
-        RestAssured.port = port.orElse(RestAssured.DEFAULT_PORT);
-        RestAssured.baseURI = baseUri.orElse(RestAssured.DEFAULT_URI);
-        RestAssured.rootPath = rootPath.orElse(RestAssured.DEFAULT_PATH);
+        RestAssured.port = port.orElse(80);
+        RestAssured.baseURI = baseUri.orElse("http://codeleak.pl");
+        RestAssured.rootPath = rootPath.orElse("");
     }
 }
