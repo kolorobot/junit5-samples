@@ -8,7 +8,7 @@ import pl.codeleak.samples.shared.petclinic.repository.VisitType;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class _3_EnumParameterizedTests {
+class _4_EnumParameterizedTests {
 
     private final VisitsValidator validator = new VisitsValidator();
 

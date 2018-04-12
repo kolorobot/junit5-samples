@@ -40,5 +40,4 @@ class _2_MethodParameterizedTests {
             Arguments.of(Pets.byName("Leo").get(), LocalDateTime.parse("2017-01-03T10:00:00"), false)
         );
     }
-
 }
