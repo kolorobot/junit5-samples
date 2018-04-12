@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '1.5.8.RELEASE'
+        springBootVersion = '1.5.12.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -19,8 +19,7 @@ repositories {
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
-    compile('org.springframework.boot:spring-boot-starter-data-mongodb')
-    compile('de.flapdoodle.embed:de.flapdoodle.embed.mongo:1.50.5')
+
     testCompile('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'junit'
     }

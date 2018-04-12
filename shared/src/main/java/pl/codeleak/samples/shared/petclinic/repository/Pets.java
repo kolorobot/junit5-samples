@@ -7,7 +7,6 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class Pets implements Repository<Pet> {
-
     private static List<Pet> pets = new ArrayList<>(Arrays.asList(
         aPet("Leo", "2013-09-07", "George Franklin"),
         aPet("Basil", "2014-08-06", "Betty Davis"),

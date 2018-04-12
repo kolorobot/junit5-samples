@@ -1,5 +1,7 @@
 package pl.codeleak.samples.shared.petclinic.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -16,8 +18,10 @@ public class Pet extends NamedEntity {
 
     private PetType type;
 
+    @JsonManagedReference
     private Owner owner;
 
+    @JsonIgnore
     private Set<Visit> visits = new HashSet<>();
 
     @Builder

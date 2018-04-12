@@ -1,5 +1,6 @@
 package pl.codeleak.samples.shared.petclinic.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,6 +15,8 @@ public class Owner extends Person {
     private String address;
     private String city;
     private String telephone;
+
+    @JsonBackReference
     private Set<Pet> pets = new HashSet<>();
 
     @Builder
