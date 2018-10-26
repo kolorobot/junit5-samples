@@ -24,7 +24,7 @@ class _3_MethodParameterizedWithCustomArgumentConverterTests {
     @ParameterizedTest
     @MethodSource("pets")
     void methodSourceParameterized(
-        @ConvertWith(StringToPet.class) Pet givenPet, LocalDateTime givenDate, boolean expectedResult) {
+            @ConvertWith(StringToPet.class) Pet givenPet, LocalDateTime givenDate, boolean expectedResult) {
         // act
         boolean result = validator.canScheduleVisitForPet(givenPet, givenDate);
 
@@ -34,10 +34,10 @@ class _3_MethodParameterizedWithCustomArgumentConverterTests {
 
     private static Stream<Arguments> pets() {
         return Stream.of(
-            Arguments.of("Freddy", "2017-01-06T10:00:00", false),
-            Arguments.of("Freddy", "2017-11-06T10:00:00", true),
-            Arguments.of("Mulligan", "2017-01-06T10:00:00", true),
-            Arguments.of("Leo", "2017-01-03T10:00:00", false)
+                Arguments.of("Freddy", "2017-01-06T10:00:00", false),
+                Arguments.of("Freddy", "2017-11-06T10:00:00", true),
+                Arguments.of("Mulligan", "2017-01-06T10:00:00", true),
+                Arguments.of("Leo", "2017-01-03T10:00:00", false)
         );
     }
 

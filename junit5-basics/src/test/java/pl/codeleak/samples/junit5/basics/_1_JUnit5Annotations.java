@@ -2,8 +2,8 @@ package pl.codeleak.samples.junit5.basics;
 
 import org.junit.jupiter.api.*;
 
-@DisplayName("JUnit5 - Test basics")
-class _1_JUnit5Basics {
+@DisplayName("JUnit5 annotations")
+class _1_JUnit5Annotations {
 
     @BeforeAll
     static void beforeAll() {

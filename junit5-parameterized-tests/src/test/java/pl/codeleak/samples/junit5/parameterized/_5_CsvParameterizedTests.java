@@ -25,10 +25,10 @@ class _5_CsvParameterizedTests {
     @DisplayName("Can schedule visit for pet")
     @ParameterizedTest
     @CsvSource(delimiter = ';', value = {
-        "Freddy;2017-01-06T10:00:00;false",
-        "Freddy;2017-11-06T10:00:00;true",
-        "Mulligan;2017-01-06T10:00:00;true",
-        "Leo;2017-01-03T10:00:00;false"}
+            "Freddy;2017-01-06T10:00:00;false",
+            "Freddy;2017-11-06T10:00:00;true",
+            "Mulligan;2017-01-06T10:00:00;true",
+            "Leo;2017-01-03T10:00:00;false"}
     )
     void csvSourceParameterized(@ConvertWith(StringToPet.class) Pet givenPet,
                                 LocalDateTime givenDate,

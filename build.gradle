@@ -7,20 +7,16 @@ buildscript {
     repositories {
         mavenCentral()
     }
-    dependencies {
-        classpath "org.junit.platform:junit-platform-gradle-plugin:${junitPlatformVersion}"
-    }
 }
 
 allprojects {
 
     group = 'pl.codeleak.samples.junit5-samples'
-    version = '1.0.0'
+    version = "${junitPlatformVersion}"
 
     apply plugin: 'java'
-    apply plugin: 'org.junit.platform.gradle.plugin'
 
-    sourceCompatibility = 1.8
+    sourceCompatibility = 11
 
     repositories {
         mavenCentral()
@@ -33,12 +29,23 @@ allprojects {
         /* To avoid compiler warnings about @API annotations in JUnit code */
         testCompileOnly('org.apiguardian:apiguardian-api:1.0.0')
     }
+
+
+    test {
+        useJUnitPlatform()
+        testLogging {
+            events "passed", "skipped", "failed"
+        }
+        reports {
+            html.enabled = true
+        }
+    }
 }
 
 
 project(":shared") {
     dependencies {
-        compileOnly("org.projectlombok:lombok:1.16.20")
+        compileOnly("org.projectlombok:lombok:1.18.2")
     }
 }
 
@@ -50,5 +57,5 @@ configure(subprojects.findAll { it.name != 'shared' }) {
 
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '4.6'
+    gradleVersion = '4.10.2'
 }

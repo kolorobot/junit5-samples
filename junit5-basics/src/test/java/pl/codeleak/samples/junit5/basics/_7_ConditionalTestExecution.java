@@ -23,7 +23,7 @@ class _7_ConditionalTestExecution {
     }
 
     @Test
-    @DisabledOnJre(JRE.JAVA_10)
+    @DisabledOnJre(JRE.JAVA_11)
     void notOnJava10() {
 
     }

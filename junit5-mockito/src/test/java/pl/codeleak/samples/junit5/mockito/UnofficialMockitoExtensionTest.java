@@ -1,6 +1,6 @@
 package pl.codeleak.samples.junit5.mockito;
 
-import name.falgout.jeffrey.testing.junit5.MockitoExtension;
+import name.falgout.jeffrey.testing.junit.mockito.MockitoExtension;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,6 +13,7 @@ import pl.codeleak.samples.shared.petclinic.repository.Pets;
 import pl.codeleak.samples.shared.petclinic.repository.VisitType;
 import pl.codeleak.samples.shared.petclinic.repository.Visits;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -34,7 +35,7 @@ class UnofficialMockitoExtensionTest {
 
     @Test
     @DisplayName("Should send notification about the visit for a given pet")
-    void sendsNotification(ArgumentCaptor<String> messageCaptor) {
+    void sendsNotification(@Mock List<String> messages, ArgumentCaptor<String> messageCaptor) {
         // arrange
         String petName = "Leo";
         String visitDate = "2017-10-26T19:00";

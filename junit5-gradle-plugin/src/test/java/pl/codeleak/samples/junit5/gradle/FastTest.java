@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 @Tag("fast")
 class FastTest {
     @Test
-    void test() {
+    void someFastTest() {
         System.out.println("Fast test ...");
     }
 }

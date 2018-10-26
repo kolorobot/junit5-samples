@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '1.5.12.RELEASE'
+        springBootVersion = '1.5.17.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -25,7 +25,7 @@ dependencies {
     }
 
     /* This is only required for Spring Boot 1.x */
-    testCompile('com.github.sbrannen:spring-test-junit5:1.0.0')
+    testCompile('com.github.sbrannen:spring-test-junit5:1.3.1')
 
     /* REST Assured can be used to test the REST API */
     testCompile project(":junit5-rest-assured")

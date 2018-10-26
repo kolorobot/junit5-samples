@@ -13,20 +13,20 @@ class VisitsValidator {
 
     boolean hasVisitWithDescription(String description) {
         return visits.findAll().stream()
-                     .anyMatch(v -> v.getDescription().contains(description));
+                .anyMatch(v -> v.getDescription().contains(description));
     }
 
     boolean canScheduleVisitForPet(Pet pet, LocalDateTime dateTime) {
         return !visits.findByPet(pet)
-                      .filter(v -> v.getDate().equals(dateTime))
-                      .isPresent();
+                .filter(v -> v.getDate().equals(dateTime))
+                .isPresent();
     }
 
     boolean canScheduleVisit(VisitType visitType) {
         long totalVisits = visits.findAll().stream()
-                                 .map(Visit::getVisitType)
-                                 .filter(visitType::equals)
-                                 .count();
+                .map(Visit::getVisitType)
+                .filter(visitType::equals)
+                .count();
 
         return totalVisits < visitType.getMaxVisits();
     }
