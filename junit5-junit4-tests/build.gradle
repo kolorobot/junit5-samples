@@ -1,0 +1,4 @@
+dependencies {
+    testCompile "junit:junit:4.12"
+    testRuntime "org.junit.vintage:junit-vintage-engine:${junitJupiterVersion}"
+}
