@@ -5,7 +5,7 @@ This is a multi-project Gradle project with JUnit 5 examples.
 
 ## Requirements
 
-- Java 9
+- Java 11
 - IDE supporting Lombok (developed in IntelliJ)
 
 ## Articles referring to this repository
