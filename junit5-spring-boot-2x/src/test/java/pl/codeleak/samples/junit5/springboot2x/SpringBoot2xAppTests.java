@@ -1,12 +1,9 @@
 package pl.codeleak.samples.junit5.springboot2x;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.junit.jupiter.api.Test;
+import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringJUnitWebConfig
 class SpringBoot2xAppTests {
 
     @Test
