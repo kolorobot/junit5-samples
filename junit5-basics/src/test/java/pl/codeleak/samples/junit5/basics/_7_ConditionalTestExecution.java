@@ -6,6 +6,12 @@ import org.junit.jupiter.api.condition.*;
 class _7_ConditionalTestExecution {
 
     @Test
+    @EnabledOnOs(OS.MAC)
+    void onlyOnMac() {
+
+    }
+
+    @Test
     @EnabledOnOs(OS.WINDOWS)
     void onlyOnWindows() {
 
@@ -23,8 +29,14 @@ class _7_ConditionalTestExecution {
     }
 
     @Test
-    @DisabledOnJre(JRE.JAVA_11)
+    @DisabledOnJre(JRE.JAVA_10)
     void notOnJava10() {
+
+    }
+
+    @Test
+    @EnabledOnJre(JRE.JAVA_11)
+    void onJava11() {
 
     }
 

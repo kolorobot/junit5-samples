@@ -33,10 +33,10 @@ class _2c_AssertTimeout {
     @Test
     void assertTimeoutPreemptively() {
         // arrange
-        Executable task = () -> Thread.sleep(1000);
+        Executable task = () -> Thread.sleep(100);
 
         // aborts execution when timeout exceeded
-        Assertions.assertTimeoutPreemptively(Duration.ofMillis(100), task::execute);
+        Assertions.assertTimeoutPreemptively(Duration.ofMillis(1000), task::execute);
     }
 
     @Test
