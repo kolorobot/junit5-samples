@@ -19,8 +19,8 @@ class _2a_AssertAll {
 
         // assert
         Assertions.assertAll(
-                () -> Assertions.assertTrue(owners.contains("Betty Doe"), "Contains Betty Doe"),
-                () -> Assertions.assertTrue(owners.contains("John Doe"), "Continas John Doe"),
+                () -> Assertions.assertTrue(owners.contains("Betty Davis"), "Contains Betty Davis"),
+                () -> Assertions.assertFalse(owners.contains("John Doe"), "Does not contain John Doe"),
                 () -> Assertions.assertTrue(owners.contains("Eduardo Rodriquez"), "Eduardo Rodriquez")
         );
     }
@@ -33,7 +33,7 @@ class _2a_AssertAll {
         // assert
         Assertions.assertAll(
                 () -> {
-                    Assertions.assertTrue(owners.contains("Betty Doe"), "Contains Betty Doe");
+                    Assertions.assertTrue(owners.contains("Betty Davis"), "Eduardo Rodriquez");
 
                     Assertions.assertAll(
                             () -> Assertions.assertNotNull(owners),

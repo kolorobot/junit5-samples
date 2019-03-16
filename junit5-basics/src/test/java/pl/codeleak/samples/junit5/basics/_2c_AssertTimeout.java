@@ -15,10 +15,10 @@ class _2c_AssertTimeout {
     @Test
     void assertTimeout() {
         // arrange
-        Executable task = () -> Thread.sleep(1000);
+        Executable task = () -> Thread.sleep(100);
 
         // waits for the task to finish before failing the test
-        Assertions.assertTimeout(Duration.ofMillis(100), task::execute);
+        Assertions.assertTimeout(Duration.ofMillis(500), task::execute);
     }
 
     @Test
@@ -54,15 +54,17 @@ class _2c_AssertTimeout {
     }
 
     @Test
-    void assertTimeoutPreemptivelyWithThrowingSupplierThatActuallyThrows() {
+    void assertTimeoutPreemptivelyWithAssertDoesNotThrow() {
         // arrange
         ThrowingSupplier<String> task = () -> {
             Thread.sleep(100);
-            throw new IllegalArgumentException("Well done!");
+//            throw new IllegalArgumentException("Well done!");
+            return "result";
         };
 
-        // aborts execution when timeout exceeded, returns the result
-        String result = Assertions.assertTimeoutPreemptively(Duration.ofMillis(200), task);
+        // aborts execution when timeout exceeded, asserts not exceptions was thrown, returns the result
+        String result = Assertions.assertTimeoutPreemptively(Duration.ofMillis(200),
+                () -> Assertions.assertDoesNotThrow(task));
 
         Assertions.assertEquals("result", result);
     }

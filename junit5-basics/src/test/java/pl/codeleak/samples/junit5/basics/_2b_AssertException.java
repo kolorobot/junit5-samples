@@ -27,7 +27,7 @@ class _2b_AssertException {
 
         assertAll(
                 () -> assertEquals("Unexpected error!", thrown.getMessage()),
-                () -> assertNotNull(thrown.getCause())
+                () -> assertNull(thrown.getCause())
         );
     }
 }
