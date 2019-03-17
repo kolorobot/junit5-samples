@@ -1,8 +1,6 @@
 package pl.codeleak.samples.junit5.extensions;
 
-import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.RepetitionInfo;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.io.TempDir;
 
 import java.io.IOException;
@@ -18,6 +16,11 @@ class _2_TempDirShared {
 
     @TempDir
     static Path tempDir;
+
+    @BeforeAll
+    static void setUp() {
+        assertTrue(Files.isDirectory(tempDir));
+    }
 
     @RepeatedTest(3)
     void throwsErrorWhenTargetFileExists(RepetitionInfo repetitionInfo) throws IOException {
