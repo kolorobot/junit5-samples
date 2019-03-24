@@ -8,18 +8,17 @@ import java.util.Comparator;
 class _10c_CustomTestExecutionOrder {
 
     @Test
-    void firstTest() {
-
-    }
-
-
-    @Test
-    void secondTest() {
+    void aTest() {
 
     }
 
     @Test
-    void thirdTest() {
+    void abTest() {
+
+    }
+
+    @Test
+    void abcTest() {
 
     }
 

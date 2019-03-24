@@ -9,18 +9,17 @@ import org.junit.jupiter.api.TestMethodOrder;
 class _10b_RandomTestExecutionOrder {
 
     @Test
-    void firstTest() {
-
-    }
-
-
-    @Test
-    void secondTest() {
+    void aTest() {
 
     }
 
     @Test
-    void thirdTest() {
+    void bTest() {
+
+    }
+
+    @Test
+    void cTest() {
 
     }
 

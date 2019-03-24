@@ -9,23 +9,17 @@ import org.junit.jupiter.api.TestMethodOrder;
 class _10a_AlphanumericTestExecutionOrder {
 
     @Test
-    void firstTest() {
-
-    }
-
-
-    @Test
-    void secondTest() {
+    void aTest() {
 
     }
 
     @Test
-    void thirdTest() {
+    void bTest() {
 
     }
 
     @Test
-    void fourthTest() {
+    void cTest() {
 
     }
 

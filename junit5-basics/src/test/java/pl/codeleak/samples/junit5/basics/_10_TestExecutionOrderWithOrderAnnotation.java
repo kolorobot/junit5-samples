@@ -10,20 +10,19 @@ class _10_TestExecutionOrderWithOrderAnnotation {
 
     @Order(1)
     @Test
-    void firstTest() {
+    void aTest() {
 
     }
 
-
     @Order(2)
     @Test
-    void secondTest() {
+    void bTest() {
 
     }
 
     @Order(3)
     @Test
-    void thirdTest() {
+    void cTest() {
 
     }
 
