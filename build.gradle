@@ -27,7 +27,7 @@ allprojects {
         testCompile("org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}")
 
         /* To avoid compiler warnings about @API annotations in JUnit code */
-        testCompileOnly('org.apiguardian:apiguardian-api:1.0.0')
+        testCompileOnly('org.apiguardian:apiguardian-api:1.1.0')
     }
 
 
@@ -45,7 +45,11 @@ allprojects {
 
 project(":shared") {
     dependencies {
-        compileOnly("org.projectlombok:lombok:1.18.2")
+        compileOnly 'org.projectlombok:lombok:1.18.20'
+        annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+        testCompileOnly 'org.projectlombok:lombok:1.18.20'
+        testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
     }
 }
 
@@ -56,5 +60,5 @@ configure(subprojects.findAll { it.name != 'shared' }) {
 }
 
 wrapper {
-    gradleVersion = '5.2.1'
+    gradleVersion = '6.8.3'
 }

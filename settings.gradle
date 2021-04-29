@@ -1,1 +1,2 @@
-include 'shared', 'junit5-basics', 'junit5-gradle-plugin', 'junit5-assertj', 'junit5-mockito', 'junit5-parameterized-tests', 'junit5-parameter-resolver', 'junit5-rest-assured', 'junit5-spring-boot-1x', 'junit5-spring-boot-2x', 'junit5-kotlin', 'junit5-junit4-tests', 'junit5-built-in-extensions'
+include 'shared', 'junit5-basics', 'junit5-gradle-plugin', 'junit5-assertj', 'junit5-mockito', 'junit5-parameterized-tests', 'junit5-parameter-resolver', 'junit5-rest-assured', 'junit5-spring-boot-1x', 'junit5-spring-boot-2x', 'junit5-kotlin', 'junit5-junit4-tests', 'junit5-built-in-extensions', 'junit5-testcontainers'
+

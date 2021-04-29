@@ -1,6 +1,7 @@
 dependencies {
-    testCompile "org.mockito:mockito-core:2.25.1"
-    testCompile "org.mockito:mockito-junit-jupiter:2.25.1"
-    // still maintained
-    testCompile "name.falgout.jeffrey.testing.junit5:mockito-extension:1.1.1"
+    testCompile "org.mockito:mockito-core:3.9.0"
+    testCompile "org.mockito:mockito-junit-jupiter:3.9.0"
+    testCompile "eu.benschroeder:mockito-extension:3.9.0"
+    // not maintained anymore
+    testCompile "name.falgout.jeffrey.testing.junit5:mockito-extension:1.2.1"
 }
