@@ -1,16 +1,13 @@
 package pl.codeleak.samples.shared.petclinic.model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 abstract class Person extends BaseEntity {
 
-    private final String firstName;
-
-    private final String lastName;
+    private String firstName;
+    private String lastName;
 
 }

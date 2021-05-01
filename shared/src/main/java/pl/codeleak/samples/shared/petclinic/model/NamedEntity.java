@@ -1,14 +1,13 @@
 package pl.codeleak.samples.shared.petclinic.model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 abstract class NamedEntity extends BaseEntity {
 
-    private final String name;
+    private String name;
 
 }

@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true, exclude = {"owner", "visits"})
 public class Pet extends NamedEntity {
 
     private LocalDate birthDate;

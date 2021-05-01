@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true, exclude = {"pets"})
 public class Owner extends Person {
 
     private String address;

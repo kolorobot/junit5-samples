@@ -3,7 +3,7 @@ package pl.codeleak.samples.junit5.kotlin
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
-class `Beatifull name for my test in Kotlin` {
+class `Beautiful name for my test in Kotlin` {
 
     @Test
     fun `Kotlin Test with JUnit 5`() {

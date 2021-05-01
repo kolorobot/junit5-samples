@@ -11,13 +11,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-class AssertJAssertionsTest {
+@DisplayName("")
+class _2_AssertAllAndAssertThat {
 
     private final Owners testObj = new Owners();
 
     @Test
-    @DisplayName("Should find owner by its name (AssertJ Soft Assertions)")
-    void findsOwnerByName1() {
+    void softAssertions() {
         // arrange
         String givenName = "Jean";
         String expectedCity = "Monona";
@@ -37,8 +37,7 @@ class AssertJAssertionsTest {
     }
 
     @Test
-    @DisplayName("Should find owner by its name (JUnit 5 + AssertJ)")
-    void findsOwnerByName2() {
+    void assertAllWithAssertThat() {
         // arrange
         String givenName = "Jean";
         String expectedCity = "Monona";
@@ -51,15 +50,14 @@ class AssertJAssertionsTest {
         assertThat(result).isPresent();
 
         assertAll(
-            () -> assertThat(result.get().getFirstName()).isEqualTo(givenName),
-            () -> assertThat(result.get().getCity()).isEqualTo(expectedCity),
-            () -> assertThat(result.get().getAddress()).isEqualTo(expectedAddress)
+                () -> assertThat(result.get().getFirstName()).isEqualTo(givenName),
+                () -> assertThat(result.get().getCity()).isEqualTo(expectedCity),
+                () -> assertThat(result.get().getAddress()).isEqualTo(expectedAddress)
         );
     }
 
     @Test
-    @DisplayName("Should find owner by its name (AssertJ + JUnit 5)")
-    void findsOwnerByName3() {
+    void assertThatWithAssertAll() {
         // arrange
         String givenName = "Jean";
         String expectedCity = "Monona";
@@ -70,9 +68,9 @@ class AssertJAssertionsTest {
 
         // assert
         assertThat(result).hasValueSatisfying(owner -> assertAll(
-            () -> assertThat(owner.getFirstName()).isEqualTo(givenName),
-            () -> assertThat(owner.getCity()).isEqualTo(expectedCity),
-            () -> assertThat(owner.getAddress()).isEqualTo(expectedAddress)
+                () -> assertThat(owner.getFirstName()).isEqualTo(givenName),
+                () -> assertThat(owner.getCity()).isEqualTo(expectedCity),
+                () -> assertThat(owner.getAddress()).isEqualTo(expectedAddress)
         ));
     }
 }
