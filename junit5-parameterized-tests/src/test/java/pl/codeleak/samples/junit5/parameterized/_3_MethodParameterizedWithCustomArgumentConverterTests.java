@@ -44,7 +44,7 @@ class _3_MethodParameterizedWithCustomArgumentConverterTests {
     private static class StringToPet implements ArgumentConverter {
         @Override
         public Object convert(Object source, ParameterContext context) throws ArgumentConversionException {
-            return Pets.byName(source.toString()).get();
+            return Pets.byName(source.toString());
         }
     }
 }

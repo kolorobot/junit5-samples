@@ -2,10 +2,7 @@ package pl.codeleak.samples.shared.petclinic.repository;
 
 import pl.codeleak.samples.shared.petclinic.model.PetType;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 public class PetTypes {
 
@@ -23,7 +20,10 @@ public class PetTypes {
         return PetType.builder().name(petType).build();
     }
 
-    public static Optional<PetType> byName(String petType) {
-        return petTypes.stream().filter(pt -> Objects.equals(pt.getName(), petType)).findFirst();
+    public static PetType byName(String petType) {
+        return petTypes.stream()
+                .filter(pt -> Objects.equals(pt.getName(), petType))
+                .findFirst()
+                .orElseThrow();
     }
 }

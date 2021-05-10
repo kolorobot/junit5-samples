@@ -1,12 +1,7 @@
 package pl.codeleak.samples.junit5.basics;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
-import org.junit.jupiter.api.function.ThrowingSupplier;
+import org.junit.jupiter.api.*;
 
-import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 

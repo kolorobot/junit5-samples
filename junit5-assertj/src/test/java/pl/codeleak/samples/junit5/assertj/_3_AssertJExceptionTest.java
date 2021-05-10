@@ -19,7 +19,7 @@ class _3_AssertJExceptionTest {
     @DisplayName("Should throw an exception when scheduling a visit (AssertJ Style)")
     void exceptionTesting1() {
         // arrange
-        Pet givenPet = Pets.byName("Leo").get();
+        Pet givenPet = Pets.byName("Leo");
 
         // assert & act
         assertThatThrownBy(() -> testObj.scheduleVisit(givenPet))
@@ -31,7 +31,7 @@ class _3_AssertJExceptionTest {
     @DisplayName("Should throw an exception when scheduling a visit (JUnit5 Style)")
     void exceptionTesting2() {
         // arrange
-        Pet givenPet = Pets.byName("Leo").get();
+        Pet givenPet = Pets.byName("Leo");
 
         // act
         UnsupportedOperationException resultException =

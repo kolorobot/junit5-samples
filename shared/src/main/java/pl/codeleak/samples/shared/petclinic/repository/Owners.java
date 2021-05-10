@@ -38,7 +38,7 @@ public class Owners implements Repository<Owner> {
         return owners.stream()
                      .filter(owner -> Objects.equals(names[0], owner.getFirstName()))
                      .filter(owner -> Objects.equals(names[1], owner.getLastName()))
-                     .findFirst().get();
+                     .findFirst().orElseThrow();
     }
 
     @Override

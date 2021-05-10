@@ -21,7 +21,7 @@ public class Visits implements Repository<Visit> {
         return Visit.builder()
                     .date(LocalDateTime.parse(dateTime))
                     .description(description)
-                    .pet(Pets.byName(petName).get())
+                    .pet(Pets.byName(petName))
                     .visitType(visitType)
                     .build();
     }

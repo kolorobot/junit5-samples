@@ -7,6 +7,7 @@ import pl.codeleak.samples.shared.petclinic.model.Pet;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.*;
@@ -55,7 +56,6 @@ class _1_AssertJBasicAssertions {
         // arrange
         List<String> list = Arrays.asList("one", "two", "three", "four");
 
-        // assert
         // assert
         assertThat(list)
                 .isNotEmpty()
@@ -106,6 +106,18 @@ class _1_AssertJBasicAssertions {
                 .hasSameTextualContentAs(file2);
     }
 
+//    @Test
+//    void paths() throws IOException {
+//        // arrange
+//        Path path1 = Path.of("abc", "xyz");
+//
+//        // assert
+//        assertThat(path1)
+//                .doesNotExist()
+//                .endsWith(Path.of("xyz"));
+//
+//    }
+
     @Test
     void objects() {
         // arrange
@@ -151,12 +163,15 @@ class _1_AssertJBasicAssertions {
     @Test
     void conditions() {
         // arrange
-        Pet pet = Pet.builder().name("Leo").birthDate(LocalDate.of(2020, Month.JANUARY, 1)).build();
+        Pet pet = Pet.builder()
+                .name("Leo")
+                .birthDate(LocalDate.of(2021, Month.JANUARY, 1))
+                .build();
 
-        Condition<Pet> leo = new Condition<>(p -> p.getName().matches("Leo"), "is leo");
+        Condition<Pet> leo = new Condition<>(p -> p.getName().matches("Leo"), "Leo");
 
         Condition<Pet> bornInJanuary2020 = new Condition<>(
-                p -> p.getBirthDate().isEqual(LocalDate.of(2020, Month.JANUARY, 1)), "is born in january 2020"
+                p -> p.getBirthDate().isEqual(LocalDate.of(2021, Month.JANUARY, 1)), "born in january 2020"
         );
 
         // assert

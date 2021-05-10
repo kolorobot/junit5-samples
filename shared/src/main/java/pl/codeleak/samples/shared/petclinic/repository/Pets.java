@@ -32,8 +32,8 @@ public class Pets implements Repository<Pet> {
         return pet;
     }
 
-    public static Optional<Pet> byName(String name) {
-        return pets.stream().filter(p -> Objects.equals(p.getName(), name)).findFirst();
+    public static Pet byName(String name) {
+        return pets.stream().filter(p -> Objects.equals(p.getName(), name)).findFirst().orElseThrow();
     }
 
     public Optional<Pet> findByName(String name) {

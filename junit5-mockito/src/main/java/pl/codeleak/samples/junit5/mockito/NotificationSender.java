@@ -5,6 +5,6 @@ class NotificationSender {
     private static final String MESSAGE = "Sending message about %s with content %s";
 
     void sendMessage(String receiver, String content) {
-        System.out.println(String.format(MESSAGE, receiver, content));
+        System.out.printf((MESSAGE) + "%n", receiver, content);
     }
 }
