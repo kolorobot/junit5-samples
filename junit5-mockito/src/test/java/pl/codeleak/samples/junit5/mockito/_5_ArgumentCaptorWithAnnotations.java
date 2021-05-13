@@ -6,17 +6,19 @@ import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.doNothing;
 
 @ExtendWith(MockitoExtension.class)
 class _5_ArgumentCaptorWithAnnotations {
 
-    interface Doer {
-        void doSomething();
-        void doSomething(String arg1, Integer arg2);
+    interface SomeInterface {
+        void someMethod();
+
+        void someMethod(String arg1, Integer arg2);
     }
 
     @Mock
-    Doer mock;
+    SomeInterface mock;
 
     @Captor
     ArgumentCaptor<String> arg1;
@@ -28,13 +30,12 @@ class _5_ArgumentCaptorWithAnnotations {
     void argumentCaptors() {
 
         // arrange
-        Mockito.doNothing().when(mock).doSomething(arg1.capture(), arg2.capture());
+        doNothing().when(mock).someMethod(arg1.capture(), arg2.capture());
 
         // act
-        mock.doSomething("Str", 42);
+        mock.someMethod("Str", 42);
 
         assertEquals("Str", arg1.getValue());
         assertEquals(42, arg2.getValue());
     }
-
 }

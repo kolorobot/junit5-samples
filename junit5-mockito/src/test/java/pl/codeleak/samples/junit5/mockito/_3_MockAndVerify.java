@@ -8,6 +8,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class _3_MockAndVerify {
@@ -21,20 +22,19 @@ class _3_MockAndVerify {
     @Test
     void mockAndVerify() {
         // arrange
-        Mockito.when(mock.add(1))
+        when(mock.add(1))
                 .thenReturn(true);
         // act
         mock.add(1);
 
         // assert
-        Mockito.verify(mock)
-                .add(1);
+        verify(mock).add(1);
     }
 
     @Test
     void mockAndVerifyMultipleCalls() {
         // arrange
-        Mockito.when(mock.add(1))
+        when(mock.add(1))
                 .thenReturn(true)
                 .thenReturn(false)
                 .thenReturn(false);
@@ -44,20 +44,19 @@ class _3_MockAndVerify {
         mock.add(1);
 
         // assert
-        Mockito.verify(mock, Mockito.times(3))
-                .add(1);
+        verify(mock, times(3)).add(1);
     }
 
 
     @Test
     void verifyInOrder() {
-        Mockito.when(mock.add(1)).thenReturn(true);
-        Mockito.when(anotherMock.add(1)).thenReturn(true);
+        when(mock.add(1)).thenReturn(true);
+        when(anotherMock.add(1)).thenReturn(true);
 
         anotherMock.add(1);
         mock.add(1);
 
-        InOrder inOrder = Mockito.inOrder(anotherMock, mock);
+        InOrder inOrder = inOrder(anotherMock, mock);
         inOrder.verify(anotherMock).add(1);
         inOrder.verify(mock).add(1);
     }
@@ -70,31 +69,28 @@ class _3_MockAndVerify {
     @Test
     void verifyNoMoreInteractions() {
         // arrange
-        Mockito.when(mock.add(1))
-                .thenReturn(true);
+        when(mock.add(1)).thenReturn(true);
         // act
         mock.add(1);
 
         // assert
-        Mockito.verify(mock)
-                .add(1);
+        verify(mock).add(1);
         Mockito.verifyNoMoreInteractions(mock);
     }
 
     @Test
     void mockWithThenThrow() {
         // arrange
-        Mockito.when(mock.add(1)).thenReturn(true);
-        Mockito.when(mock.add(2)).thenThrow(new IllegalArgumentException("2"));
+        when(mock.add(1)).thenReturn(true);
+        when(mock.add(2)).thenThrow(new IllegalArgumentException("2"));
 
         // act
         mock.add(1);
         assertThrows(IllegalArgumentException.class, () -> mock.add(2));
 
-        Mockito.verify(mock)
-                .add(1);
-        Mockito.verify(mock)
-                .add(2);
+        verify(mock).add(1);
+        verify(mock).add(2);
+
         Mockito.verifyNoMoreInteractions(mock);
     }
 }

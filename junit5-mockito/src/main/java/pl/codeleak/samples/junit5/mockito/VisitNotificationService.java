@@ -13,12 +13,12 @@ class VisitNotificationService implements NotificationService {
     private final Visits visits;
     private final NotificationSender notificationSender;
 
-    public VisitNotificationService(Visits visits, NotificationSender notificationSender) {
+    VisitNotificationService(Visits visits, NotificationSender notificationSender) {
         this.visits = visits;
         this.notificationSender = notificationSender;
     }
 
-    public void notifyAboutVisit(Pet pet) {
+    void notifyAboutVisit(Pet pet) {
         Visit visit = visits.findByPet(pet)
                 .orElseThrow(() -> new IllegalStateException(String.format(ERROR_MESSAGE, pet)));
 
