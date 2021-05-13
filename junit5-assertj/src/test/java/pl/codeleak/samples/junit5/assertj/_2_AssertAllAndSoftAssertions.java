@@ -12,7 +12,7 @@ import static org.assertj.core.api.SoftAssertions.assertSoftly;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 @DisplayName("")
-class _2_AssertAllAndAssertThat {
+class _2_AssertAllAndSoftAssertions {
 
     private final Owners testObj = new Owners();
 
