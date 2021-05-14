@@ -1,4 +1,10 @@
 dependencies {
-    testCompile "org.mockito:mockito-core:3.9.0"
+    // testCompile "org.mockito:mockito-core:3.9.0"
+
+    // Experimental features:
+    // https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#mockito-inline
+    // https://javadoc.io/static/org.mockito/mockito-core/3.10.0/org/mockito/Mockito.html#39
+    testCompile "org.mockito:mockito-inline:3.9.0"
     testCompile "org.mockito:mockito-junit-jupiter:3.9.0"
+
 }
