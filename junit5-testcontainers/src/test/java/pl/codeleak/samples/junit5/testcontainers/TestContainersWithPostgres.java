@@ -1,7 +1,6 @@
 package pl.codeleak.samples.junit5.testcontainers;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -11,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
 
+@Disabled
 @Testcontainers
 class TestContainersWithPostgres {
 
