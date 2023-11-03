@@ -1,10 +1,8 @@
 package pl.codeleak.samples.junit5.junit4;
 
-
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import org.junit.runner.RunWith;
 
 public class JUnit4Test {
 

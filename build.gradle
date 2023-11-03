@@ -1,9 +1,4 @@
 buildscript {
-    ext {
-        junitPlatformVersion = junitPlatformVersion
-        junitJupiterVersion = junitJupiterVersion
-        kotlinVersion = kotlinVersion
-    }
     repositories {
         mavenCentral()
     }
@@ -16,49 +11,47 @@ allprojects {
 
     apply plugin: 'java'
 
-    sourceCompatibility = 11
+    java {
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(17))
+        }
+    }
 
     repositories {
         mavenCentral()
     }
 
     dependencies {
-        /* The only one required dependency to get started with JUnit 5 */
-        testCompile("org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}")
-
-        /* To avoid compiler warnings about @API annotations in JUnit code */
-        testCompileOnly('org.apiguardian:apiguardian-api:1.1.0')
+        testImplementation platform("org.junit:junit-bom:${junitJupiterVersion}")
+        testImplementation 'org.junit.jupiter:junit-jupiter'
     }
-
 
     test {
         useJUnitPlatform()
         testLogging {
             events "passed", "skipped", "failed"
         }
-        reports {
-            html.enabled = true
-        }
     }
 }
 
 
 project(":shared") {
+    lombokVersion = "1.18.30"
     dependencies {
-        compileOnly 'org.projectlombok:lombok:1.18.20'
-        annotationProcessor 'org.projectlombok:lombok:1.18.20'
+        compileOnly "org.projectlombok:lombok:${lombokVersion}"
+        annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 
-        testCompileOnly 'org.projectlombok:lombok:1.18.20'
-        testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
+        testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
+        testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
     }
 }
 
 configure(subprojects.findAll { it.name != 'shared' }) {
     dependencies {
-        compile project(":shared")
+        implementation project(":shared")
     }
 }
 
 wrapper {
-    gradleVersion = '6.8.3'
+    gradleVersion = '8.4'
 }

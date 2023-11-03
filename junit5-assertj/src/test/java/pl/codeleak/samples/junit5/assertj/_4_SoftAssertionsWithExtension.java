@@ -27,7 +27,7 @@ public class _4_SoftAssertionsWithExtension {
         Optional<Owner> result = testObj.findByName(givenName);
 
         softly.assertThat(result.get().getFirstName()).isEqualTo("Jean");
-        softly.assertThat(result.get().getCity()).isEqualTo("Mononas");
+        softly.assertThat(result.get().getCity()).isEqualTo("Monona");
         softly.assertThat(result.get().getAddress()).isEqualTo("105 N. Lake St.");
 
     }

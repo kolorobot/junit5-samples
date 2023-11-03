@@ -2,6 +2,7 @@ package pl.codeleak.samples.junit5.assertj;
 
 import org.assertj.core.api.Condition;
 import org.assertj.core.api.SoftAssertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import pl.codeleak.samples.shared.petclinic.model.Pet;
 
@@ -106,17 +107,18 @@ class _1_AssertJBasicAssertions {
                 .hasSameTextualContentAs(file2);
     }
 
-//    @Test
-//    void paths() throws IOException {
-//        // arrange
-//        Path path1 = Path.of("abc", "xyz");
-//
-//        // assert
-//        assertThat(path1)
-//                .doesNotExist()
-//                .endsWith(Path.of("xyz"));
-//
-//    }
+    @Test
+    @Disabled
+    void paths() throws IOException {
+        // arrange
+        Path path1 = Path.of("abc", "xyz");
+
+        // assert
+        assertThat(path1)
+                .doesNotExist()
+                .endsWith(Path.of("xyz"));
+
+    }
 
     @Test
     void objects() {

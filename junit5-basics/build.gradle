@@ -1,4 +1,0 @@
-dependencies {
-    // not required, unless you want to use JUnit Platform Launcher API
-    testCompile("org.junit.platform:junit-platform-launcher:${junitPlatformVersion}")
-}

@@ -1,6 +1,6 @@
 dependencies {
-    testCompile "org.testcontainers:testcontainers:1.15.3"
-    testCompile "org.testcontainers:junit-jupiter:1.15.3"
-    testCompile "org.testcontainers:postgresql:1.15.3"
-    testCompile "org.postgresql:postgresql:42.2.20"
+    testImplementation "org.testcontainers:testcontainers:1.19.1"
+    testImplementation "org.testcontainers:junit-jupiter:1.19.1"
+    testImplementation "org.testcontainers:postgresql:1.19.1"
+    testImplementation "org.postgresql:postgresql:42.6.0"
 }

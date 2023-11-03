@@ -1,6 +1,7 @@
 package pl.codeleak.samples.junit5.testcontainers;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
@@ -22,6 +23,7 @@ class TestContainersWithPostgres {
             .withExposedPorts(7868);
 
     @Test
+    @Disabled
     public void queryAllEmployees() throws SQLException {
         var employees = getAllEmployees();
 

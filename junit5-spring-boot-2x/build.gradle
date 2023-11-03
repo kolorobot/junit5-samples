@@ -1,5 +1,5 @@
 plugins {
-    id 'org.springframework.boot' version '2.4.5'
+    id 'org.springframework.boot' version '2.7.17'
     id 'java'
 }
 
@@ -10,12 +10,12 @@ repositories {
 }
 
 dependencies {
-    compile 'org.springframework.boot:spring-boot-starter-web'
-    testCompile 'org.springframework.boot:spring-boot-starter-test'
-    
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
     /* Override dependencies versions (to fix the issue with dependencies being incorrectly set for this sub-project) */
-    testCompile("org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}")
-    testCompile("org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}")
-    testCompile("org.junit.platform:junit-platform-commons:${junitPlatformVersion}")
-    testCompile("org.junit.platform:junit-platform-engine:${junitPlatformVersion}")
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}"
+    testImplementation "org.junit.platform:junit-platform-commons:${junitPlatformVersion}"
+    testImplementation "org.junit.platform:junit-platform-engine:${junitPlatformVersion}"
 }

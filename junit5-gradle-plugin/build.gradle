@@ -10,11 +10,8 @@ test {
     testLogging {
         events "passed", "skipped", "failed"
     }
-    reports {
-        html.enabled = true
-    }
 }
 
 dependencies {
-    testCompile("org.junit.platform:junit-platform-suite-api:${junitPlatformVersion}")
+    testImplementation "org.junit.platform:junit-platform-suite-api:${junitPlatformVersion}"
 }
